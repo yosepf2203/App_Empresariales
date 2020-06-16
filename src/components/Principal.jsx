@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,10 +10,12 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body1" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         CookBook
@@ -44,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#ffa040',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -57,6 +59,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const url =  `https://37tpbz4ba8.execute-api.us-east-1.amazonaws.com/prop/api/${username}/${password}`; 
+
+  let history = useHistory();
+
+  const Validacion = async () => {
+    axios.get(url).then((response) => {
+      // handle success
+      console.log('succes',response);
+      if (response.data ==='1') {
+        alert("Login successful!"); 
+        setPassword("");
+        setUsername(""); 
+        // TODO: limpiar cajas de texto :v
+        history.push("/buscarreceta")
+       } else {
+         alert("Credentials are wrong!"); 
+        }
+    })
+    .catch((error) => {
+      // handle error
+      alert("Error:", error); 
+      console.log('error',error);
+    });
+  };
+
+  const onChangep = e => setPassword(e.target.value);
+  const onChangeu = e => setUsername(e.target.value);
+  const onSubmit = e => {
+    e.preventDefault();
+    Validacion();
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -68,10 +104,12 @@ export default function SignInSide() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Log in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={onSubmit}>
             <TextField
+              value={username} 
+              onChange={onChangeu}
               variant="outlined"
               margin="normal"
               required
@@ -81,9 +119,12 @@ export default function SignInSide() {
               name="user"
               autoComplete="user"
               autoFocus
+              color="secondary"
             />
             <TextField
+              value={password}
               variant="outlined"
+              onChange={onChangep}
               margin="normal"
               required
               fullWidth
@@ -92,16 +133,16 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              color="secondary"
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              style={{ background: '#ffa040' }}
               className={classes.submit}
-          
             >
-              Sign In
+              Log In
             </Button>
             <Grid container>
               <Grid item xs>
