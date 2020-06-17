@@ -69,7 +69,7 @@ function App() {
   return (
     <div>
       <AppNavbar />
-    <div className="App" class="wrapper"> 
+    <div className="App" class="wrapperbuscar"> 
     <center> <br></br>
     <Grid> 
       <Container maxWidth="xl" > 
@@ -86,7 +86,7 @@ function App() {
     <div className="recipes">
       {recipes !== [] &&
         recipes.map(recipe => <Recipe key={uuidv4()} recipe={recipe} />)}
-        <div class="push"></div> 
+        <div class="pushbuscar"></div> 
     </div>
     </center>
   </div>

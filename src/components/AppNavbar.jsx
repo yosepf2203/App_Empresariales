@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import MovieIcon from '@material-ui/icons/Movie';
 import FavoriteIcon from '@material-ui/icons/Favorite'; 
+import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +37,10 @@ export default function AppNavbar() {
       
         <Toolbar>
         <Button href="buscarreceta"  ><img  style={logo} src="https://i.ibb.co/6vvK7XG/loogoo.png" alt=""/></Button>
-          <Typography variant="h6" className={classes.title}>
-          </Typography>
-          <ButtonGroup size="large" color="secondary" aria-label="large outlined primary button group">
-          <IconButton href="recetafav" color="inherit" aria-label="star">
+        <Typography variant="h6" className={classes.title}>
+        </Typography>
+        <ButtonGroup size="large" color="secondary" aria-label="large outlined primary button group">
+      <IconButton href="recetafav" color="inherit" aria-label="star">
         <StarIcon style={{ fontSize: 30 }}/>
       </IconButton>
       <IconButton href="recetarandom" color="inherit" aria-label="repeat">
@@ -51,6 +52,9 @@ export default function AppNavbar() {
       <IconButton href="health" color="inherit" aria-label="favorite"> 
         <FavoriteIcon style={{ fontSize: 30 }}/> 
       </IconButton> 
+      <IconButton href="calificacion" color="inherit" aria-label="thumbsupdown">
+        <ThumbsUpDownIcon style={{ fontSize: 30 }}/>
+      </IconButton>
           </ButtonGroup>
         </Toolbar>
       </AppBar>

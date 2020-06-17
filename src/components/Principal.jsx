@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,7 +6,6 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
@@ -15,7 +13,13 @@ import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
-    <Typography variant="body1" color="textSecondary" align="center">
+    <Typography variant="h6" color="textSecondary" align="center">
+      {'Si usted no tiene usuario, aquí puede '}
+      <Link color="inherit" href="newuser">
+        crear uno.
+      </Link>{' '}
+      <br></br>
+      <br></br>
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         CookBook
@@ -31,11 +35,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
+    backgroundImage: 'url(https://i.ibb.co/GdGbsQJ/Cook-Book-F.png)',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
     backgroundPosition: 'center',
   },
   paper: {
@@ -62,8 +65,8 @@ export default function SignInSide() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const url =  `https://37tpbz4ba8.execute-api.us-east-1.amazonaws.com/prop/api/${username}/${password}`; 
-
+  const url =  `https://nwfchqyrce.execute-api.us-east-1.amazonaws.com/prop/api/${username}/${password}`; 
+  
   let history = useHistory();
 
   const Validacion = async () => {
@@ -86,6 +89,9 @@ export default function SignInSide() {
       console.log('error',error);
     });
   };
+  const logo = {
+    height:67
+  };
 
   const onChangep = e => setPassword(e.target.value);
   const onChangeu = e => setUsername(e.target.value);
@@ -100,12 +106,8 @@ export default function SignInSide() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
+        <img  style={logo} src="https://i.ibb.co/nbP4Tj9/looogoo.png" alt=""/>
+       
           <form onSubmit={onSubmit}>
             <TextField
               value={username} 

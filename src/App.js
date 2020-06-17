@@ -12,6 +12,9 @@ import RecetaRandom from './components/RecetaRandom';
 import RecetaFav from './components/RecetaFav';
 import Videos from './components/Videos';
 import Health from './components/Health';
+import NewUser from './components/NewUser';
+import Calificacion from './components/Calificacion';
+
 
 function App() {
 
@@ -36,7 +39,12 @@ function App() {
      <Route path="/health">
        <Health/>
      </Route>
-   
+     <Route path="/newuser">
+       <NewUser/>
+     </Route>
+     <Route path="/calificacion">
+       <Calificacion/>
+     </Route>
 
      {/* when user accesses /principal, load principal */}
      <Route path='/principal'>

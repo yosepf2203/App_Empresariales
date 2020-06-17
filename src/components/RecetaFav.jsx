@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -18,10 +18,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(2),
+  table: {
+    maxWidth: 1500,
     margin: 'auto',
-    maxWidth: 500,
+  },
+  paper: {
+    padding: theme.spacing(5),
+    margin: 'auto',
+    minWidth: 500,
     color: theme.palette.text.secondary,
   },
   image: {
@@ -36,13 +40,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: '#AC845B',
+    fontSize: 18,
+    color: 'white',
+    align: 'center'
+  },
+  body: {
+    fontSize: 18
+  }
+}))(TableCell);
+
 
 export default function ComplexGrid() {
   const classes = useStyles();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://5ee6cc4452bb0500161fcff4.mockapi.io/Api').then((response) => {
+    axios.get('https://927fp4oqr0.execute-api.us-east-1.amazonaws.com/prop/api').then((response) => {
     console.log('succes ',response.data);
     setData(response.data);
   }).catch((error) => {
@@ -55,7 +71,7 @@ export default function ComplexGrid() {
   return (
     <div>
       <AppNavbar />
-      <div className={classes.root} class="wrapper"> 
+      <div className={classes.root} class="wrapperfav"> 
       <React.Fragment>
       <CssBaseline />
       <br></br><br></br> 
@@ -67,24 +83,29 @@ export default function ComplexGrid() {
     </React.Fragment>
       <br/><br/>
       <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>userkey</TableCell>
-            <TableCell align="right">URL</TableCell>
+      <Table className={classes.table}>
+        <TableHead className={classes.head}>
+          <TableRow className={classes.row}>
+            <StyledTableCell>Receta</StyledTableCell>
+            <StyledTableCell align="left">Si quieres ver la receta completa accede al respectivo link</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
-            <TableRow key={row.Userkey }>
-              <TableCell component="th" scope="row">
-                {row.Userkey }
-              </TableCell>
-              <TableCell align="right">{row.Url}</TableCell>
+            <TableRow key={row.NombreReceta }>
+              <StyledTableCell fontSize="20"scope="row" width='700px'>{row.NombreReceta} </StyledTableCell>
+              <StyledTableCell align="left"> {row.Url}</StyledTableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </TableContainer>
       <div class="push"></div> 
     </div>

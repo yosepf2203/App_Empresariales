@@ -3,7 +3,7 @@ html {
 }
 .alert h3 {
   font-size: 1.8rem;
-  color: #fff;
+  color: #614830;
   font-weight: 400;
   text-transform: uppercase;
   text-align: center;
@@ -64,7 +64,7 @@ ul.a {
   list-style-type: circle;
   color: #AC845B;
 }
-.wrapper {
+.wrapperbuscar {
   min-height: 700px;
   margin-bottom: 10px;
 }
@@ -76,8 +76,12 @@ ul.a {
   min-height: 700px;
   margin-bottom: 2px;
 }
-.push {
-  height: 100px;
+.wrapperfav {
+  min-height: 700px;
+  margin-bottom: -20px;
+}
+.pushbuscar {
+  height: 80px;
 }
 .push2 {
   height: 80px;
@@ -85,6 +89,10 @@ ul.a {
 .push3 {
   height: 100px;
 }
+.pushscore {
+  height: 220px;
+}
+
 .buttoning {
   background: transparent;
   border-color: rgb(243, 137, 67);
