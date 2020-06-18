@@ -10,7 +10,7 @@ const Jugadores = ({jugadores, agregarTitular, agregarSuplente}) => {
     document.addEventListener('click', setScrollContainer)
   }, ) 
   
-  // Función que fija el tamaño del grid de los jugadores
+  // Función que fija el tamaño del grid de las estrellas
   const setScrollContainer = (desktop = true) => {
     let container = gridJugadores.current
     if (container) {

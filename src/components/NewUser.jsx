@@ -1,8 +1,7 @@
 import React, { useState }  from 'react';
-import AppNavbar from './AppNavbar';
+import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid'; 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
@@ -11,7 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function NewUser() {
   const textfield = {
     width:300
-  }
+  };
+  const logo = {
+    height:85
+  };
   const theme = { 
     backgroundColor: "#AC845B", 
     color: "white", 
@@ -87,14 +89,11 @@ export default function NewUser() {
 
   return (
     <div>
-    <AppNavbar />
-    <div>
-    <br/>
-      <Grid>
-        <Container maxWidth="xl"> 
-        <img className={classes.img} alt="complex" src="https://i.ibb.co/Vtqx8Nz/banneruser.png"/> 
-        </Container> 
-      </Grid> 
+    <AppBar style={{ background: '#ffa040' }} position="static">
+  <center>
+  <Button href="principal"  ><img  style={logo} src="https://i.ibb.co/6vvK7XG/loogoo.png" alt=""/></Button>
+  </center>
+  </AppBar>
       
       <form onSubmit={onSubmit}>
       <center>
@@ -142,10 +141,8 @@ export default function NewUser() {
               </Container> 
             </div>
           </div>
-        </div>
+          </div>
         </center>
         </form>
-      </div> 
-      </div>
-          
+      </div>          
  )}
